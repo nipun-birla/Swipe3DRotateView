@@ -49,11 +49,7 @@ public class Swipe3DRotateView extends FrameLayout {
     private boolean isViewInBounds(View view, int x, int y){
 
         Rect outRect = new Rect();
-        int[] location = new int[2];
-
-        view.getDrawingRect(outRect);
-        view.getLocationOnScreen(location);
-        outRect.offset(location[0], location[1]);
+        view.getHitRect(outRect);
         return outRect.contains(x, y);
     }
 
@@ -101,8 +97,8 @@ public class Swipe3DRotateView extends FrameLayout {
         }
 
         int rawx, rawy;
-        rawx = (int)touchevent.getRawY();
-        rawy = (int)touchevent.getRawY();
+        rawx = (int)touchevent.getX();
+        rawy = (int)touchevent.getY();
         switch (touchevent.getAction()) {
             case MotionEvent.ACTION_DOWN:
                 lastX = touchevent.getX();
@@ -145,7 +141,7 @@ public class Swipe3DRotateView extends FrameLayout {
                 }
                 break;
         }
-        return isViewInBounds(this,rawx, rawy);
+        return isViewInBounds( mIsFirstView ? frontView : backView ,rawx, rawy);
     }
 
     private void applyRotation(float start, float end) {
