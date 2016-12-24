@@ -9,7 +9,7 @@ Swipe3DRotateView is extended from a Framelayout and should exactly contain 2 vi
 
 Put Swipe3DRotateView in your layout as required :
 
- <com.nipunbirla.swipe3drotateview.Swipe3DRotateView
+    <com.nipunbirla.swipe3drotateview.Swipe3DRotateView
         android:layout_height="match_parent"
         android:layout_width="match_parent">
 
