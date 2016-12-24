@@ -134,13 +134,11 @@ public class Swipe3DRotateView extends FrameLayout {
 
                     mRotationType = _3DRotationType.RotateX;
 
-                    // Handling left to right screen swap.
-                    if (lastX < currentX) {
+                    if (lastY > currentY) {
                         applyRotation(0, 90);
                     }
 
-                    // Handling right to left screen swap.
-                    if (lastX > currentX) {
+                    if (lastY < currentY) {
                         applyRotation(0, -90);
                     }
                     mIsFirstView = !mIsFirstView;
