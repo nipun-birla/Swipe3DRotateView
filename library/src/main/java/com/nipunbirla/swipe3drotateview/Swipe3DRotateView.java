@@ -24,6 +24,8 @@ public class Swipe3DRotateView extends FrameLayout {
     private static final float MINX = 60;
     private static boolean isAnimating;
     private boolean mIsFirstView = true;
+    private boolean allowXRotation = true, allowYRotation = true;
+    private _3DRotationType mRotationType;
     View frontView,backView;
     Animation.AnimationListener halmAnimation ,completeAnimation;
 
@@ -53,6 +55,22 @@ public class Swipe3DRotateView extends FrameLayout {
         view.getLocationOnScreen(location);
         outRect.offset(location[0], location[1]);
         return outRect.contains(x, y);
+    }
+
+    public void setIsXRotationAllowed(boolean isAllowed){
+        allowXRotation = isAllowed;
+    }
+
+    public boolean isXRotationAllowed(){
+        return allowXRotation;
+    }
+
+    public void setIsYRotationAllowed(boolean isAllowed){
+        allowYRotation = isAllowed;
+    }
+
+    public boolean isYRotationAllowed(){
+        return allowYRotation;
     }
 
     public void setAnimationDuration(long duration){
@@ -98,7 +116,23 @@ public class Swipe3DRotateView extends FrameLayout {
                 float diffX = currentX - lastX;
                 float diffY = currentY - lastY;
 
-                if((Math.abs(diffX) > Math.abs(diffY)) && Math.abs(diffX) > MINX && !isAnimating) {
+                if((Math.abs(diffX) > Math.abs(diffY)) && Math.abs(diffX) > MINX && !isAnimating && allowYRotation) {
+
+                    mRotationType = _3DRotationType.RotateY;
+
+                    // Handling left to right screen swap.
+                    if (lastX < currentX) {
+                        applyRotation(0, 90);
+                    }
+
+                    // Handling right to left screen swap.
+                    if (lastX > currentX) {
+                        applyRotation(0, -90);
+                    }
+                    mIsFirstView = !mIsFirstView;
+                } else if((Math.abs(diffY) > Math.abs(diffX)) && Math.abs(diffY) > MINX && !isAnimating && allowXRotation) {
+
+                    mRotationType = _3DRotationType.RotateX;
 
                     // Handling left to right screen swap.
                     if (lastX < currentX) {
@@ -127,7 +161,7 @@ public class Swipe3DRotateView extends FrameLayout {
         // Create a new 3D rotation with the supplied parameter
         // The animation listener is used to trigger the next animation
         final Flip3DAnimation rotation =
-                new Flip3DAnimation(start, end, centerX, centerY);
+                new Flip3DAnimation(start, end, centerX, centerY, mRotationType);
         rotation.setDuration(ANIMATION_DURATION);
         rotation.setFillAfter(true);
         rotation.setInterpolator(new AccelerateInterpolator());
@@ -194,13 +228,13 @@ public class Swipe3DRotateView extends FrameLayout {
                 v2.setVisibility(View.VISIBLE);
                 v2.bringToFront();
 
-                rotation = new Flip3DAnimation(start, end, centerX, centerY);
+                rotation = new Flip3DAnimation(start, end, centerX, centerY, mRotationType);
             } else {
                 v2.setVisibility(View.GONE);
                 v1.setVisibility(View.VISIBLE);
                 v1.bringToFront();
 
-                rotation = new Flip3DAnimation(start, end, centerX, centerY);
+                rotation = new Flip3DAnimation(start, end, centerX, centerY, mRotationType);
             }
 
             rotation.setDuration(ANIMATION_DURATION);

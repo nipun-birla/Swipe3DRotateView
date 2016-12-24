@@ -15,13 +15,15 @@ public class Flip3DAnimation extends Animation {
     private final float mCenterX;
     private final float mCenterY;
     private Camera mCamera;
+    private _3DRotationType mRotationType;
 
     public Flip3DAnimation(float fromDegrees, float toDegrees,
-                           float centerX, float centerY) {
+                           float centerX, float centerY, _3DRotationType rotationType) {
         mFromDegrees = fromDegrees;
         mToDegrees = toDegrees;
         mCenterX = centerX;
         mCenterY = centerY;
+        mRotationType = rotationType;
     }
 
     @Override
@@ -43,7 +45,14 @@ public class Flip3DAnimation extends Animation {
 
         camera.save();
 
-        camera.rotateY(degrees);
+        switch (mRotationType){
+            case RotateX:
+                camera.rotateX(degrees);
+                break;
+            case RotateY:
+                camera.rotateY(degrees);
+                break;
+        }
 
         camera.getMatrix(matrix);
         camera.restore();
