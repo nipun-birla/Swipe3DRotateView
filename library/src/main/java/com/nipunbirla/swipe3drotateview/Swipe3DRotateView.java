@@ -69,8 +69,8 @@ public class Swipe3DRotateView extends FrameLayout {
         return allowYRotation;
     }
 
-    public void setAnimationDuration(long duration){
-        ANIMATION_DURATION = duration;
+    public void setAnimationDuration(long durationMillis){
+        ANIMATION_DURATION = durationMillis/2;
     }
 
     public void setHalfAnimationCompleteListener(Animation.AnimationListener listener){

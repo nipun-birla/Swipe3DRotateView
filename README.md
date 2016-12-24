@@ -10,6 +10,7 @@ Swipe3DRotateView is extended from a Framelayout and should exactly contain 2 vi
 Put Swipe3DRotateView in your layout as required :
 
     <com.nipunbirla.swipe3drotateview.Swipe3DRotateView
+        android:id="@+id/rotateView"
         android:layout_height="match_parent"
         android:layout_width="match_parent">
 
@@ -30,5 +31,39 @@ Put Swipe3DRotateView in your layout as required :
         </FrameLayout>
 
     </com.nipunbirla.swipe3drotateview.Swipe3DRotateView>
+
+Find view in your activity as :
+
+    Swipe3DRotateView swipe3DRotateView = findViewById(R.id.rotateView);
+
+To set if X Rotation is allowed :
+
+    swipe3DRotateView.setIsXRotationAllowed(true);
+
+To set if Y Rotation is allowed :
+
+    swipe3DRotateView.setIsYRotationAllowed(true);
+
+To check if X Rotation is allowed :
+
+    boolean isXAllowed = swipe3DRotateView.isXRotationAllowed();
+
+To check if Y Rotation is allowed :
+
+    boolean isYAllowed = swipe3DRotateView.isYRotationAllowed();
+
+To set Animation duration, default value is 1000 millis
+
+    swipe3DRotateView.setAnimationDuration(1000);
+
+To set animation listener on view up front, use :
+
+    swipe3DRotateView.setHalfAnimationCompleteListener(halfListener);
+
+To set animation listener on view at back, use :
+
+    swipe3DRotateView.setCompleteAnimationCompleteListener(fullListener);
+
+
 
 

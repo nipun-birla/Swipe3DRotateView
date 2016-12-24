@@ -9,6 +9,7 @@
     tools:context="com.nipunbirla.sampleproject.MainActivity">
 
     <com.nipunbirla.swipe3drotateview.Swipe3DRotateView
+        android:id="@+id/rotateView"
         android:layout_height="match_parent"
         android:layout_width="match_parent">
 
