@@ -1,5 +1,7 @@
 <h1>Swipe3DRotateView</h1>
 
+![Screenshot](https://cloud.githubusercontent.com/assets/7312366/21467583/d5905664-ca18-11e6-898c-8b8b2ca6d03a.gif)
+
 <h2>Purpose</h2>
 Swipe3DRotateView is a class designed to simplify the implementation of 3D Flip Rotation in android based on swipe gestures.
 
