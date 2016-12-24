@@ -9,6 +9,12 @@ Swipe3DRotateView is extended from a Framelayout and should exactly contain 2 vi
 
 <h2>Usage</h2>
 
+Add dependency in your build.gradle(app)
+
+    dependencies {
+        compile 'com.github.nipun-birla:Swipe3DRotateView:0.0.1'
+    }
+
 Put Swipe3DRotateView in your layout as required :
 
     <com.nipunbirla.swipe3drotateview.Swipe3DRotateView
