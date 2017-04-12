@@ -1,4 +1,4 @@
-<h1>Swipe3DRotateView [![Screenshot](https://img.shields.io/badge/Android%20Arsenal-Swipe3DRotateView-brightgreen.svg?style=flat)](https://android-arsenal.com/details/1/5572) </h1>
+Swipe3DRotateView [![Screenshot](https://img.shields.io/badge/Android%20Arsenal-Swipe3DRotateView-brightgreen.svg?style=flat)](https://android-arsenal.com/details/1/5572)
 
 ![Screenshot](https://cloud.githubusercontent.com/assets/7312366/21467583/d5905664-ca18-11e6-898c-8b8b2ca6d03a.gif)
 
